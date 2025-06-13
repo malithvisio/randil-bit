@@ -1,0 +1,25 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Allow read access to all files for all users
+    match /{allPaths=**} {
+      allow read: if true;
+    }
+    
+    // Allow write access to blog images
+    match /blogs/{imageId} {
+      allow write: if true;
+    }
+    
+    // Allow write access to product images
+    match /products/{imageId} {
+      allow write: if true;
+    }
+    
+    // Allow write access to test files
+    match /test-uploads/{fileName} {
+      allow write: if true;
+    }
+  }
+}

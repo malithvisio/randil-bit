@@ -1,0 +1,316 @@
+{
+  "info": {
+    "_postman_id": "f7db3a21-5ecb-4a48-b3a3-9cbb1e9c50e9",
+    "name": "Firebase Storage CORS Tests",
+    "description": "Collection for testing Firebase Storage API including CORS configuration",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "List Objects in blogs folder",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Origin",
+            "value": "http://localhost:3000",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://firebasestorage.googleapis.com/v0/b/randillanka-2cc47.appspot.com/o?prefix=blogs",
+          "protocol": "https",
+          "host": ["firebasestorage", "googleapis", "com"],
+          "path": ["v0", "b", "randillanka-2cc47.appspot.com", "o"],
+          "query": [
+            {
+              "key": "prefix",
+              "value": "blogs"
+            }
+          ]
+        },
+        "description": "Lists all objects in the blogs folder of Firebase Storage"
+      },
+      "response": []
+    },
+    {
+      "name": "Check CORS preflight",
+      "request": {
+        "method": "OPTIONS",
+        "header": [
+          {
+            "key": "Origin",
+            "value": "http://localhost:3000",
+            "type": "text"
+          },
+          {
+            "key": "Access-Control-Request-Method",
+            "value": "POST",
+            "type": "text"
+          },
+          {
+            "key": "Access-Control-Request-Headers",
+            "value": "Content-Type",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://firebasestorage.googleapis.com/v0/b/randillanka-2cc47.appspot.com/o/blogs%2Ftest-image.jpg?uploadType=resumable",
+          "protocol": "https",
+          "host": ["firebasestorage", "googleapis", "com"],
+          "path": [
+            "v0",
+            "b",
+            "randillanka-2cc47.appspot.com",
+            "o",
+            "blogs%2Ftest-image.jpg"
+          ],
+          "query": [
+            {
+              "key": "uploadType",
+              "value": "resumable"
+            }
+          ]
+        },
+        "description": "Sends a preflight request to check CORS configuration for uploading"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Object Metadata",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Origin",
+            "value": "http://localhost:3000",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://firebasestorage.googleapis.com/v0/b/randillanka-2cc47.appspot.com/o/blogs%2F{{image_filename}}?alt=media",
+          "protocol": "https",
+          "host": ["firebasestorage", "googleapis", "com"],
+          "path": [
+            "v0",
+            "b",
+            "randillanka-2cc47.appspot.com",
+            "o",
+            "blogs%2F{{image_filename}}"
+          ],
+          "query": [
+            {
+              "key": "alt",
+              "value": "media"
+            }
+          ]
+        },
+        "description": "Gets metadata for a specific object. Replace {{image_filename}} with an actual file name."
+      },
+      "response": []
+    },
+    {
+      "name": "Test Direct Upload (Initiate)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Origin",
+            "value": "http://localhost:3000",
+            "type": "text"
+          },
+          {
+            "key": "X-Goog-Upload-Protocol",
+            "value": "resumable",
+            "type": "text"
+          },
+          {
+            "key": "X-Goog-Upload-Command",
+            "value": "start",
+            "type": "text"
+          },
+          {
+            "key": "X-Goog-Upload-Content-Type",
+            "value": "image/jpeg",
+            "type": "text"
+          },
+          {
+            "key": "X-Goog-Upload-Content-Length",
+            "value": "{{content_length}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"contentType\": \"image/jpeg\",\n    \"name\": \"test-postman-upload.jpg\",\n    \"metadata\": {\n        \"customMetadata\": {\n            \"uploadedFrom\": \"postman\",\n            \"uploadedAt\": \"{{$timestamp}}\"\n        }\n    }\n}"
+        },
+        "url": {
+          "raw": "https://firebasestorage.googleapis.com/v0/b/randillanka-2cc47.appspot.com/o/blogs%2Ftest-postman-upload.jpg?uploadType=resumable",
+          "protocol": "https",
+          "host": ["firebasestorage", "googleapis", "com"],
+          "path": [
+            "v0",
+            "b",
+            "randillanka-2cc47.appspot.com",
+            "o",
+            "blogs%2Ftest-postman-upload.jpg"
+          ],
+          "query": [
+            {
+              "key": "uploadType",
+              "value": "resumable"
+            }
+          ]
+        },
+        "description": "Initiates a resumable upload. This should return an upload URL in the 'Location' header."
+      },
+      "response": []
+    },
+    {
+      "name": "Test Direct Upload (Complete)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "image/jpeg",
+            "type": "text"
+          },
+          {
+            "key": "Origin",
+            "value": "http://localhost:3000",
+            "type": "text"
+          },
+          {
+            "key": "X-Goog-Upload-Protocol",
+            "value": "resumable",
+            "type": "text"
+          },
+          {
+            "key": "X-Goog-Upload-Command",
+            "value": "upload, finalize",
+            "type": "text"
+          },
+          {
+            "key": "X-Goog-Upload-Offset",
+            "value": "0",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "file",
+          "file": {
+            "src": "Select a file to upload"
+          }
+        },
+        "url": {
+          "raw": "{{upload_url}}",
+          "host": ["{{upload_url}}"]
+        },
+        "description": "Completes the upload using the URL received from the initiate step. Replace {{upload_url}} with the URL from the 'Location' header."
+      },
+      "response": []
+    },
+    {
+      "name": "Test CORS Header Response",
+      "request": {
+        "method": "HEAD",
+        "header": [
+          {
+            "key": "Origin",
+            "value": "http://localhost:3000",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://firebasestorage.googleapis.com/v0/b/randillanka-2cc47.appspot.com/o/blogs",
+          "protocol": "https",
+          "host": ["firebasestorage", "googleapis", "com"],
+          "path": ["v0", "b", "randillanka-2cc47.appspot.com", "o", "blogs"]
+        },
+        "description": "Tests CORS headers in the response"
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Test File",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Origin",
+            "value": "http://localhost:3000",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://firebasestorage.googleapis.com/v0/b/randillanka-2cc47.appspot.com/o/blogs%2Ftest-postman-upload.jpg",
+          "protocol": "https",
+          "host": ["firebasestorage", "googleapis", "com"],
+          "path": [
+            "v0",
+            "b",
+            "randillanka-2cc47.appspot.com",
+            "o",
+            "blogs%2Ftest-postman-upload.jpg"
+          ]
+        },
+        "description": "Deletes a test file after testing"
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// You can use this script to set environment variables",
+          "pm.environment.set(\"timestamp\", new Date().toISOString());"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// You can write tests to validate responses here",
+          "if (pm.response.code === 200) {",
+          "    console.log(\"Request successful\");",
+          "} else {",
+          "    console.log(\"Request failed with status: \" + pm.response.code);",
+          "}",
+          "",
+          "// Check CORS headers",
+          "const corsHeader = pm.response.headers.get(\"Access-Control-Allow-Origin\");",
+          "if (corsHeader) {",
+          "    console.log(\"CORS header present: \" + corsHeader);",
+          "} else {",
+          "    console.log(\"CORS header missing\");",
+          "}"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "image_filename",
+      "value": "replace-with-actual-filename.jpg"
+    },
+    {
+      "key": "content_length",
+      "value": "10000"
+    },
+    {
+      "key": "upload_url",
+      "value": "replace-with-url-from-initiate-step"
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+/* Blog content styles */
+.blog-content {
+  font-family: inherit;
+  line-height: 1.8;
+  color: inherit;
+}
+
+/* Text formatting styles */
+.blog-content strong,
+.blog-content b {
+  font-weight: bold;
+}
+
+.blog-content em,
+.blog-content i {
+  font-style: italic;
+}
+
+.blog-content u {
+  text-decoration: underline;
+}
+
+.blog-content s,
+.blog-content strike,
+.blog-content del {
+  text-decoration: line-through;
+}
+
+/* Text alignment */
+.blog-content .ql-align-center {
+  text-align: center;
+}
+
+.blog-content .ql-align-right {
+  text-align: right;
+}
+
+.blog-content .ql-align-justify {
+  text-align: justify;
+}
+
+/* Headings */
+.blog-content h1 {
+  font-size: 2.5rem;
+  margin: 2rem 0 1.5rem;
+}
+
+.blog-content h2 {
+  font-size: 2rem;
+  margin: 1.8rem 0 1.2rem;
+}
+
+.blog-content h3 {
+  font-size: 1.75rem;
+  margin: 1.6rem 0 1rem;
+}
+
+.blog-content h4 {
+  font-size: 1.5rem;
+  margin: 1.4rem 0 0.8rem;
+}
+
+/* Paragraphs and spacing */
+.blog-content p {
+  margin: 1rem 0;
+}
+
+/* Lists */
+.blog-content ul,
+.blog-content ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.blog-content li {
+  margin: 0.5rem 0;
+}
+
+/* Links */
+.blog-content a {
+  color: #0066cc;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.blog-content a:hover {
+  color: #0052a3;
+  text-decoration: underline;
+}
+
+/* Images */
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+}
+
+/* Blockquotes */
+.blog-content blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid #e0e0e0;
+  background-color: #f5f5f5;
+  font-style: italic;
+}
+
+/* Code blocks */
+.blog-content pre {
+  background-color: #f6f8fa;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.blog-content code {
+  font-family: "Consolas", "Monaco", monospace;
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+}
+
+/* Tables */
+.blog-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.blog-content th,
+.blog-content td {
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+}
+
+.blog-content th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+/* Blog preview styles */
+.blog-content.description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 1rem 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Rich Text Editor Specific Styles */
+.rich-text-content p {
+  margin-bottom: 1rem;
+}
+
+.rich-text-content h1,
+.rich-text-content h2,
+.rich-text-content h3,
+.rich-text-content h4,
+.rich-text-content h5,
+.rich-text-content h6 {
+  font-weight: bold;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.rich-text-content ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.rich-text-content ol {
+  list-style-type: decimal;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.rich-text-content blockquote {
+  border-left: 4px solid #ccc;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  color: #666;
+}
+
+.rich-text-content .ql-align-center {
+  text-align: center;
+}
+
+.rich-text-content .ql-align-right {
+  text-align: right;
+}
+
+.rich-text-content .ql-align-justify {
+  text-align: justify;
+}
+
+.rich-text-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+}
+
+.blog-content.description h1,
+.blog-content.description h2,
+.blog-content.description h3,
+.blog-content.description h4,
+.blog-content.description h5,
+.blog-content.description h6 {
+  font-size: inherit;
+  margin: 0.5rem 0;
+}
+
+.blog-content.description img {
+  display: none;
+}
+
+.blog-content.description pre,
+.blog-content.description blockquote {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
+
+.blog-content.description ul,
+.blog-content.description ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+/* Ensure preview text doesn't overflow */
+.blog-content.description * {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .blog-content h1 {
+    font-size: 2rem;
+  }
+  .blog-content h2 {
+    font-size: 1.75rem;
+  }
+  .blog-content h3 {
+    font-size: 1.5rem;
+  }
+  .blog-content h4 {
+    font-size: 1.25rem;
+  }
+}

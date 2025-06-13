@@ -1,0 +1,19 @@
+[
+  {
+    "origin": ["http://localhost:3000", "https://randillanka.com", "*"],
+    "method": ["GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"],
+    "maxAgeSeconds": 3600,
+    "responseHeader": [
+      "Content-Type",
+      "Content-Length",
+      "Content-Range",
+      "Content-Encoding",
+      "Content-Location",
+      "ETag",
+      "Last-Modified",
+      "Accept",
+      "Origin",
+      "X-Requested-With"
+    ]
+  }
+]

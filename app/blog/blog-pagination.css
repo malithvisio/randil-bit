@@ -1,0 +1,12 @@
+/* Blog pagination styling */
+.tf-pagination .pages-link.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Current page highlighting */
+.tf-pagination .pages-item.active .pages-link {
+  background-color: #2c65ac;
+  color: #fff;
+}

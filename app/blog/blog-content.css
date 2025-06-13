@@ -1,0 +1,38 @@
+/* Blog content styles */
+.blog-content {
+  font-family: inherit;
+  line-height: 1.8;
+  color: inherit;
+}
+
+/* Text formatting */
+.blog-content strong,
+.blog-content b {
+  font-weight: 600;
+}
+
+.blog-content em,
+.blog-content i {
+  font-style: italic;
+}
+
+.blog-content u {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Make sure formatting is preserved in the description preview */
+.blog-content.description strong,
+.blog-content.description b {
+  font-weight: 600;
+}
+
+.blog-content.description em,
+.blog-content.description i {
+  font-style: italic;
+}
+
+.blog-content.description u {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

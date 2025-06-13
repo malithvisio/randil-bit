@@ -1,0 +1,52 @@
+.filterSection {
+  background-color: white;
+  padding: 1rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.filterList {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.filterItem {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.filterItem:hover {
+  background-color: #f3f4f6;
+}
+
+.filterItem.active {
+  background-color: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .filterSection {
+    padding: 0.75rem;
+  }
+
+  .filterList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .filterItem {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    text-align: center;
+    width: 100%;
+  }
+}
